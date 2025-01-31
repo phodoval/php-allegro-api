@@ -21,7 +21,7 @@ class File extends AbstractResource
         $request = $this->requestFactory
             ->createRequest(
                 'PUT',
-                sprintf('/order/checkout-forms/%s/invoices/%s', $checkoutFormId, $invoiceId)
+                sprintf('/order/checkout-forms/%s/invoices/%s/file', $checkoutFormId, $invoiceId)
             )
             ->withHeader('Content-Type', 'application/pdf');
 
