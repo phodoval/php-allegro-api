@@ -26,11 +26,11 @@ class File extends AbstractResource
             ->withHeader('Content-Type', 'application/pdf');
 
         if ($body instanceof StreamInterface) {
-            $request->withBody($body);
+            $request = $request->withBody($body);
         } elseif (is_resource($body)) {
-            $request->withBody($this->streamFactory->createStreamFromResource($body));
+            $request = $request->withBody($this->streamFactory->createStreamFromResource($body));
         } elseif (is_string($body)) {
-            $request->withBody($this->streamFactory->createStream($body));
+            $request = $request->withBody($this->streamFactory->createStream($body));
         } else {
             throw new \InvalidArgumentException(
                 sprintf('Body must be instance of %s or resource or string', StreamInterface::class)
